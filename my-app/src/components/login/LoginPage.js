@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, TextField, Button, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from './LoginContext';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(LoginContext);
 
   const handleLogin = () => {
     alert('Login successful');
-    navigate('/'); // Redirect to homepage after login
+    setIsLoggedIn(true);
+    navigate('/home'); // Redirect to profile page after login
   };
 
   const handleForgotPassword = () => {
@@ -31,16 +34,24 @@ export default function LoginPage() {
       </Typography>
       <TextField label="Email" fullWidth margin="normal" />
       <TextField label="Password" type="password" fullWidth margin="normal" />
-      <Button 
-        variant="contained" 
-        sx={{ backgroundColor: 'green', width: '302px', color: 'white', '&:hover': { backgroundColor: 'darkgreen' } }}>
+      <Button
+        id="login-button"
+        variant="contained"
+        sx={{ backgroundColor: 'green', width: '302px', color: 'white', '&:hover': { backgroundColor: 'darkgreen' } }}
+        onClick={handleLogin}
+      >
         Click Me
       </Button>
-
       {/* Forgot Password Link */}
       <Box mt={2}>
         <Link component="button" variant="body2" onClick={handleForgotPassword} sx={{ cursor: 'pointer' }}>
           Forgot Password?
+        </Link>
+      </Box>
+      {/* Sign Up Link */}
+      <Box mt={2}>
+        <Link component="button" variant="body2" onClick={() => navigate('/signup')} sx={{ cursor: 'pointer' }}>
+          Sign Up
         </Link>
       </Box>
     </Box>
