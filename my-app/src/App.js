@@ -7,7 +7,11 @@ import ProfilePage from './components/profile/Profile';
 import LoginPage from './components/login/LoginPage';
 import ForgotPasswordPage from './components/forgetPassword/ForgetPassword.js';
 import SignupPage from './components/signup/SignupPage';
+import SubscriptionPage from './components/profile/SubscriptionPage'; // Import the new SubscriptionPage
+import CoursePage from './components/profile/CoursePage'; // Import the new CoursePage
 import { LoginProvider } from './components/login/LoginContext';
+import PublishedCoursesPage from './components/profile/PublishedCoursesPage';
+import CourseDetailsPage from './components/profile/CourseDetailsPage';
 
 function App() {
   return (
@@ -22,7 +26,10 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/signup" element={<SignupPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/subscription" element={<SubscriptionPage />} /> {/* Add the new route */}
+            <Route path="/subscription/:courseId" element={<CoursePage />} /> {/* Add the new route for CoursePage */}
+            <Route path="/published-courses" element={<PublishedCoursesPage />} />
+            <Route path="/course-details/:courseId" element={<CourseDetailsPage />} /> {/* Add the new route for CourseDetailsPage */}
           </Routes>
         </LoginProvider>
       </Router>

@@ -31,6 +31,11 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(null);
   };
 
+  const handleViewSubscription = () => {
+    navigate('/subscription');
+    handleClose();
+  };
+
   const handleViewProfile = () => {
     navigate('/profile');
     handleClose();
@@ -38,6 +43,11 @@ export default function PrimarySearchAppBar() {
 
   const handleLogout = () => {
     setOpenLogoutDialog(true);
+    handleClose();
+  };
+  
+  const handleViewPublishedCourses = () => {
+    navigate('/published-courses');
     handleClose();
   };
 
@@ -101,7 +111,8 @@ export default function PrimarySearchAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleViewProfile}>View Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My Subscription</MenuItem>
+                <MenuItem onClick={handleViewSubscription}>My Subscription</MenuItem>
+                <MenuItem onClick={handleViewPublishedCourses}>Published Courses</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
               <Dialog
